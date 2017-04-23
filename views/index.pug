@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+  script(src="/javascripts/main.js")
+
+  .container-fluid
+    .page-header
+      h1.text-primary.text-center= title
+
+    h2#current
+
+    img.img-responsive(src="images/background1.jpg", style="display: block;")
+    .row
+      .col-xs-4
+        a.btn.btn-primary.btn-rounded#bt_prev
+          i.fa.fa-step-backward(aria-hidden="true")
+      .col-xs-4
+        a.btn.btn-primary.btn-rounded#bt_play
+          i.fa.fa-play(aria-hidden="true")
+        a.btn.btn-primary.btn-rounded#bt_pause
+          i.fa.fa-pause(aria-hidden="true")
+      .col-xs-4
+        a.btn.btn-primary.btn-rounded#bt_next
+          i.fa.fa-step-forward(aria-hidden="true")
+
+    ul.list-unstyled#list
+
+    form(action='/songs', method='POST', enctype='multipart/form-data')
+      input#file(type='file', name='song', accept='audio/*')
+      input(type='submit', value='Subir')
+
+    .fixed-action-btn(style="bottom: 45px; right: 24px;")
+      a.btn-floating.btn-large.blue
+        i.fa.fa-bars
+
+      ul
+        li
+          a.btn-floating.red
+            i.fa.fa-plus
+        li
+          a.btn-floating.green
+            i.fa.fa-upload
+        li
+          a.btn-floating.yellow
+            i.fa.fa-youtube
+
+    .page-footer
+      h2= "gg"
