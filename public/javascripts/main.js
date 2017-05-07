@@ -8,10 +8,13 @@ $(function() {
   })
 
   $("#bt_modal").click(function(){
+    var list = $(".modal-body ul");
+    list.empty();
+
     $.ajax({
       url : '/songs'
     }).done(function(data){
-      var list = $(".modal-body ul");
+
       var songs = JSON.parse(data);
       songs.forEach(function(song, index){
         var li = $("#itemToAdd").clone();
@@ -72,6 +75,8 @@ $(function() {
       url: '/list'
     }).done(function(data){
       var list = $("#list");
+      list.empty();
+      
       var songs = JSON.parse(data);
       songs.forEach(function(song, index){
         var li = $("#item").clone();

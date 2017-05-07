@@ -24,10 +24,11 @@ block content
         a.btn.btn-primary.btn-rounded#bt_next
           i.fa.fa-step-forward(aria-hidden="true")
 
+    li.list-group-item.justify-content-between.hidden#item
+      span.Name
+      span.Time.badge.badge-primary.badge-pill
     ul.list-group#list
-      li.list-group-item.justify-content-between.hidden#item
-        span.Name
-        span.Time.badge.badge-primary.badge-pill
+
 
     form#form.hidden(action='/songs', method='POST', enctype='multipart/form-data')
       input#file(type='file', name='song', accept='audio/*')
@@ -59,9 +60,10 @@ block content
             h4.modal-title.w-100#modalLabel= "Agregar canciones a la lista"
           <!--Body-->
           .modal-body
+            li#itemToAdd.list-group-item.justify-content-between.hidden
+              input.Checkbox.pull-right(type="checkbox")
             ul.list-group
-              li#itemToAdd.list-group-item.justify-content-between.hidden
-                input.Checkbox.pull-right(type="checkbox")
+
 
           <!--Footer-->
           .modal-footer
