@@ -12,38 +12,60 @@ block content
 
     img.img-responsive(src="images/background1.jpg", style="display: block;")
     .row
-      .col-xs-4
+      .col-xs-4(align="center")
         a.btn.btn-primary.btn-rounded#bt_prev
           i.fa.fa-step-backward(aria-hidden="true")
-      .col-xs-4
+      .col-xs-4(align="center")
         a.btn.btn-primary.btn-rounded#bt_play
           i.fa.fa-play(aria-hidden="true")
         a.btn.btn-primary.btn-rounded#bt_pause
           i.fa.fa-pause(aria-hidden="true")
-      .col-xs-4
+      .col-xs-4(align="center")
         a.btn.btn-primary.btn-rounded#bt_next
           i.fa.fa-step-forward(aria-hidden="true")
 
-    ul.list-unstyled#list
+    ul.list-group#list
+      li.list-group-item.justify-content-between.hidden#item
+        span.Name
+        span.Time.badge.badge-primary.badge-pill
 
-    form(action='/songs', method='POST', enctype='multipart/form-data')
+    form#form.hidden(action='/songs', method='POST', enctype='multipart/form-data')
       input#file(type='file', name='song', accept='audio/*')
-      input(type='submit', value='Subir')
 
-    .fixed-action-btn(style="bottom: 45px; right: 24px;")
-      a.btn-floating.btn-large.blue
-        i.fa.fa-bars
-
+    .fixed-action-btn(style="position: fixed; bottom: 20px; right: 20px;")
       ul
         li
-          a.btn-floating.red
+          a.btn-floating.red#bt_modal(data-toggle="modal" data-target="#addingModal")
             i.fa.fa-plus
         li
-          a.btn-floating.green
-            i.fa.fa-upload
+          label(for="file")
+            a.btn-floating.green
+              i.fa.fa-upload
         li
           a.btn-floating.yellow
             i.fa.fa-youtube
 
+      a.btn-floating.btn-large.blue
+        i.fa.fa-bars
+
+    .modal.fade#addingModal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+      .modal-dialog(role="document")
+        <!--Content-->
+        .modal-content
+          <!--Header-->
+          .modal-header
+            button.close(type="button" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
+            h4.modal-title.w-100#modalLabel= "Agregar canciones a la lista"
+          <!--Body-->
+          .modal-body
+            ul.list-group
+              li#itemToAdd.list-group-item.justify-content-between.hidden
+                input.Checkbox.pull-right(type="checkbox")
+
+          <!--Footer-->
+          .modal-footer
+            button.btn.btn-secondary#bt_add(type="button" data-dismiss="modal")= "Agregar"
+
     .page-footer
-      h2= "gg"
+      h2= "SoundSpace"
