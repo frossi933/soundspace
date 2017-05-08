@@ -71,13 +71,12 @@ $(function() {
   });
 
   var LoadPlaylist = function(){
-    $.ajax({
-      url: '/list'
-    }).done(function(data){
+    var source = new EventSource('/list');
+    source.addEventListener("message", function(msg){
       var list = $("#list");
       list.empty();
-      
-      var songs = JSON.parse(data);
+
+      var songs = JSON.parse(msg.data);
       songs.forEach(function(song, index){
         var li = $("#item").clone();
 
@@ -88,9 +87,7 @@ $(function() {
         li.removeClass("hidden");
 
         li.appendTo(list);
-      });
-    }).fail(function(){
-      console.log("error recuperando lista de reproduccion");
+      },false);
     });
   }
 
@@ -120,4 +117,6 @@ $(function() {
     var item = $("#item"+index);
     item.addClass("active");
   }
+
+  LoadPlaylist();
 });
