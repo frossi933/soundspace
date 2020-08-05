@@ -1,6 +1,6 @@
 # Sound Space
 
-Online music player for local networks, which allows users to upload their music and add it to the playlist. Music plays on server machine.
+local collaborative music room. It consists of a music player for accessible in your local network, which allows several users to upload their own mp3 files or paste youtube links to a shared playlist. Music from that playlist plays on the server machine
 
 ## Getting Started
 
